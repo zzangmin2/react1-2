@@ -23,6 +23,68 @@
 - 리액트의 모든 페이지는 컴포넌트로 구성
 - 하나의 컴포넌트는 다른 여러 개의 컴포넌트의 조합으로 구성이 되어 재사용성이 뛰어남
 
+### 3. 재사용성
+
+- 반복적인 작업을 줄여주기 떄문에 생산성을 높여 주고 유지보수가 용이
+- 단, 모듈의 의존성이 없어야 함
+
+#### CDN(Content Delivery Network)?
+
+- 전 세계에 분산된 서버 네트워크를 이용하여 사용자에게 웹 콘텐츠를 더 빠르게 제공하는 시스템
+
+### 리액트 시작하기
+
+```
+npx create-react-app 프로젝트이름
+```
+
+### 리액트의 메인 컴포넌트
+
+App.js
+
+```js
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
+}
+```
+
+index.js
+
+```js
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+```
+
+### package.json ? package-lock.json
+- 패키지 의존성 관리 파일
+- package-lock.json은 package.json이 변경될 떄마다 업데이트 되는 것으로 좀 더 정확한 버전이 기록되어있음
+
 ## 3월 13일 강의
 
 - 1. HTML
