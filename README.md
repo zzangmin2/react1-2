@@ -1,5 +1,53 @@
 # 김정민 202230107
 
+## 5월 1일 강의
+
+### 1. 훅의 규칙
+
+- _훅의 두 가지 규칙_
+- 첫 번째 규칙은 무조건 최상위 레벨에서만 호출해야한다는 것
+- 따라서 반복문이나 조건문 또는 중첩된 함수들 안에서는 훅을 호출하면 안 됨
+- 이 규칙에 따라서 훅은 컴포넌트가 렌더링 될 떄마다 같은 순서로 호출되어야 함
+
+- 두 번째 규칙은 함수형 컴포넌트에서만 훅을 호출해야함
+- 따라서 일반 자바스크립트 함쉥서 훅을 호출하면 안 됨
+- 훅은 함수형 컴포넌트 혹은 직접 만든 커스텀 훅에서만 호출할 수 있음
+
+### 2. 나만의 훅 만들기
+
+- 이름은 use로 시작해야함. 그렇지 않으면 다른 훅을 불러 올 수 있음
+
+```js
+import { useState, useEffect } from "react";
+
+export default function UserStatus(userId) {
+  const [isOnline, setIsOnline] = useState(null);
+
+  useEffect(() => {
+    function handleStatusChange(status) {
+      setIsOnline(status.isOnline);
+    }
+
+    ServerAPI.subscribeUserStatus(userId, handleStatusChange);
+    return () => {
+      ServerAPI.unsubscribeUserStatus(userId, handleStatusChange);
+    };
+  });
+
+  return isOnline;
+}
+```
+
+### 3. 이벤트 처리하기
+
+- DOM에서 클릭 이벤트를 처리하는 코드와 React에서 클릭 이벤트를 처리하는 코드의 차이 점
+
+1. 이벤트 이름이 onclick (DOM), onClick(React)
+2. 전달하려는 함수는 문자열 (DOM), 함수 그대로(React)
+
+- 이벤트가 발생했을 떄 해당 이벤트를 처리하는 함수를 이벤트 핸들러라고 함
+- 이벤트가 계속 발생하는 것을 계속 듣고 있다는 의미로 이벤트 리스너라고 부르기도 함
+
 ## 4월 17일 강의
 
 ### 1. 훅?
