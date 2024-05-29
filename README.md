@@ -1,5 +1,34 @@
 # 김정민 202230107
 
+## 5월 29일 강의
+
+1. select 태그
+
+```js
+const [gender, setGender] = useState("여자");
+const handleChangeGender = (e) => {
+  setGender(e.target.value);
+};
+
+return (
+  <>
+    <select value={gender} onChange={handleChangeGender}>
+      <option value="남자">남자</option>
+      <option value="여자">여자</option>
+    </select>
+  </>
+);
+```
+
+2. File input 태그
+
+- 그 값이 읽기 전용이기 때문에 리액트에서는 비제어 컴포넌트임
+
+3. input null value
+
+- 제어 컴포넌트에 value prop을 정해진 값으로 넣으면 코드를 수정하지 않는 한 입력값을 바꿀 수 없음
+- 만약 value prop은 넣되 자유롭게 입력할 수 있게 만들고 싶다면 값이 undefined 또는 null을 넣어주면 됨
+
 ## 5월 22일 강의
 
 ### 1. 리스트와 키
