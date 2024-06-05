@@ -1,5 +1,54 @@
 # 김정민 202230107
 
+## 6월 5일 강의
+
+1. Shared State
+
+- state의 공유를 의미
+- 같은 부모의 컴포넌트의 state를 자식 컴포넌트가 공유해서 사용하는 것
+
+2. 합성
+
+- 여러 개의 컴포넌트를 합쳐서 새로운 컴포넌트를 만드는 것
+- 조합 방법에 따라 합성의 사용 기법은 다음과 같이 나뉨
+
+[1]Containment(담다, 포함하다, 격리하다)
+
+- 특정 컴포넌트가 하위 컴포넌트를 포함하는 형태의 합성 방법
+- 컴포넌트에 따라서는 어떤 자식 엘리먼트가 들어올 지 미리 예상할 수 없는 경우가 있음
+- 범용적인 박스 역할을 하는 Sidebar 혹은 dialog와 같은 컴포넌트에서 특히 자주 볼 수 있음
+- 이런 컴포넌트에서는 children prop을 사용하여 자식 엘리먼트를 출력에 그대로 전달하는 것이 좋음
+- 이떄 childrenprop은 컴포넌트의 props에 기본적으로 들어있는 children속성을 사용
+- 리액트는 props.children을 통해 하위 컴포넌트를 하나로 모아서 제공
+- 만일 여러 개의 children 집합이 필요한 경우는 별도로 props를 정의해서 각각 원하는 컴포넌트를 넣어 줌
+
+```js
+export default function WelcomeDialog() {
+  return (
+    <FancyBorder color="blue">
+      <h1 className="Dialog-title">어서오세요 </h1>
+      <h1 className="Dialog-message">방문환영</h1>
+    </FancyBorder>
+  );
+}
+```
+
+```js
+export default function FancyBorder(props) {
+  return (
+    <div className={"FancyBorder" + PaymentResponse.color}>
+      {props.children}
+    </div>
+  );
+}
+```
+
+[2] Specialization (특수화, 전문화)
+
+- 범용적인 개념을 구별이 되게 구체화하는 것을 특수화라고 함
+- 객체지향 언어에서는 상속을 사용하여 특수화를 구현
+- 리액트에서는 합성을 사용하여 특수화를 구현
+
 ## 5월 29일 강의
 
 1. select 태그
