@@ -1,13 +1,62 @@
 # 김정민 202230107
 
+## 6월 12일 강의
+
+### 1 .CSS란 ?
+
+- CSS (Cascading style sheets)
+- cascading ? 계단식 이란 뜻으로 한 엘리먼트에 여러 스타일이 적용될 경우 스타일간의 충돌을 막기 위해 계단식으로 스타일을 적용시키는 규칙을 갖고 있음
+- 하나의 스타일이 여러 개의 엘리먼트에 적용될 수 있고, 하나의 엘리먼트에도 여러 개의 스타일이 적용될 수 있음
+- 엘리먼트에 스타일이 적용되는 규칙을 selector(선택자)라고 함. css는 이 선택자와 스타일로 이루어져 있음
+
+### 2. 레이아웃과 관련된 속성
+
+- 화면에 엘리먼트를 어떻게 배치할 것인지 정의
+- _가장 중요한 속성 ->`display`_
+- `none` -> 존재하지만 화면에 보이지 않음
+- `block` -> 세로로 정렬. width와 height를 가질 수 있음
+- `inline` -> 가로로 정렬. width와 height를 가질 수 없음
+
+- flex는 컨테이너의 형태로 엘리먼트를 관리
+- 최근엔 2차원 적으로 관리가 가능한 Grid 사용
+
+- _`visiblity` -> 엘리먼트의 가시성 정의_
+
+- display: none - 엘리먼트의 영역이 보이지 않음
+- visiblity:hidden - 차지하는 영역은 보임
+
+### 3. styled-components
+
+- css 문법을 그대로 사용하면서 결과물을 스타일링된 컴포넌트 형태로 만들어 주는 오픈소스 라이브러리
+- 컴포넌트 개녑을 사용하고 있어 리액트 개발에 많이 사용됨
+
+```js
+const Wrapper = styled.div`
+  padding: 1em;
+  background: gray;
+`;
+
+const Title = styled.h1`
+  font-size: 1.5rem;
+  color: white;
+  text-align: center;
+`;
+
+const Button = styled.button`
+  color: ${(props) => (props.dark ? "white" : "black")};
+  background: ${(props) => (props.dark ? "black" : "white")};
+  border: 1px solid black;
+`;
+```
+
 ## 6월 5일 강의
 
-1. Shared State
+### 1. Shared State
 
 - state의 공유를 의미
 - 같은 부모의 컴포넌트의 state를 자식 컴포넌트가 공유해서 사용하는 것
 
-2. 합성
+### 2. 합성
 
 - 여러 개의 컴포넌트를 합쳐서 새로운 컴포넌트를 만드는 것
 - 조합 방법에 따라 합성의 사용 기법은 다음과 같이 나뉨
